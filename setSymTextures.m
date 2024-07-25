@@ -3,9 +3,9 @@ function [symImg] = setSymTextures(window)
 %convert symbol files into pre-loaded texture
 symImg = struct;
 symImg.modPlus = ...
-    Screen('MakeTexture', window, imread(".\Imgs\s00.png"));
+    Screen('MakeTexture', window, imread(".\Imgs\S0.png"));
 symImg.oneBack = ...
-    Screen('MakeTexture', window, imread(".\Imgs\s01.png"));
+    Screen('MakeTexture', window, imread(".\Imgs\S1.png"));
 symImg.twoBack = ...
-    Screen('MakeTexture', window, imread(".\Imgs\s02.png"));
+    Screen('MakeTexture', window, imread(".\Imgs\S2.png"));
 return
