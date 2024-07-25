@@ -114,7 +114,7 @@ for iTrial = 1:numTrials
             n = nBackType(inbackIdx);
             TaskIO(iTrial).TrialType = append(num2str(n), 'Back');
 
-        elseif ismember(cPairId, (0:5)) || isinteger(cPairId/6)
+        elseif ismember(cPairId, (0:5)) || (mod(cPairId,6)==0)
             TaskIO(iTrial).TrialType = 'ZeroPlus';
 
         elseif ismember(cPairId, supIdx)
