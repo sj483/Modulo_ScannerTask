@@ -1,6 +1,4 @@
 function [symImg] = setSymTextures(window)
-%SET UP OF SYMBOL TEXTURE
-%convert symbol files into pre-loaded texture
 symImg = struct;
 symImg.modPlus = ...
     Screen('MakeTexture', window, imread(".\Imgs\S0.png"));

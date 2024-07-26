@@ -1,3 +1,3 @@
-function [waitframes] = getWaitFrames(presSecs,globals)
-    waitframes = round(presSecs/globals.ifi)
-end    
+function [waitframes] = getWaitFrames(secs,globals)
+waitframes = round(secs/globals.ifi);
+return

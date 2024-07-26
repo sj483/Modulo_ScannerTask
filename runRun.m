@@ -8,11 +8,9 @@ dateTimeStr = sprintf('%04d%02d%02dT%02d%02d%02d',round(clock)); %#ok<CLOCK>
 targetFn = sprintf('.%sOutputs%s%s_R%i_%s.mat',...
     filesep, filesep, SubjectId, RunId, dateTimeStr);
 
-%%
+%% Create the globals structure
 clear global;
 globals = struct;
-
-%%
 globals.SubjectId = SubjectId;
 
 %% Set IO port
@@ -40,7 +38,7 @@ catch
     end
 end
 
-%%
+%% Clear the screen
 sca;
 close all;
 
@@ -50,20 +48,11 @@ globals = getGlobals(globals);
 %% Set-up PsychToolbox
 setUp(globals.window);
 
-%%
-%make TaskIO here because we need a window to be open in order to add the
-%textures to task IO
-% in future we will put the participant ID into to get
-% the right image perms?
+%% Set TaskIO
 TaskIO = setTaskIO(SubjectId,RunId);
-disp(TaskIO)
-% Hides the cursor
 HideCursor();
 
-
-%% this is where the trial loop goes
-
-% start of main loop to run through TaskIO
+%% Trial loop
 for iT = 1:numel(TaskIO)
 
     if strcmp(TaskIO(iT).TrialType,"Null")
@@ -115,6 +104,6 @@ for iT = 1:numel(TaskIO)
     end
 end
 
-% Switch running priority of PTB back to normal
+%% Switch running priority of PTB back to normal
 Priority(0);
 return

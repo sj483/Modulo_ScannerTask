@@ -6,10 +6,10 @@ globals.escapeKey = KbName('ESCAPE');
 globals.scrollKey = KbName('b');
 globals.acceptKey = KbName('y');
 
-%% 
+%% Set monoschrome values
 [globals.white, globals.black] = setMonochromes();
 
-%%
+%% Open the PsychToolbox window
 [globals.window, windowRect] = PsychImaging('OpenWindow', 0, globals.black);
 
 %% Load the textures
@@ -34,19 +34,19 @@ globals.xyEdgesCues = CenterRectOnPoint(...
 % Resp
 [globals.xyEdgesResp, globals.xyCentreResp] = setRespCoords(nX, nY);
 
+%% Set the fixation cross
+globals.cross = setCross();
 
-%%
-% Query the frame duration
+
+%% Miscellaneous setting
+
+% Set the inter-frame interval
 globals.ifi = Screen('GetFlipInterval', globals.window);
 
 % Pen width for drawing the frames
 globals.penWidthPixels = 6;
 
-
 % Get an initial screen flip for timing
 globals.t = Screen('Flip', globals.window);
-
-%%
-globals.cross = setCross();
 
 return

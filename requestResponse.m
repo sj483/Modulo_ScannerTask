@@ -27,8 +27,10 @@ while now < tTimeOut
     end
     now = GetSecs();
 end
+
 if isnan(r)
     r = arrayPerm(cursorPos).*1i;
 end
+
 globals.t = tTimeOut;
-end
+return
