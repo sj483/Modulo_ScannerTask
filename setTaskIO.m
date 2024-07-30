@@ -38,7 +38,7 @@ nonComIdx = [
     32];
 
 
-%% Select 4 different columns of the addition table (NbackCol)
+%% Select 4 different columns of the addition table (nbackCol)
 supCol = floor(supIdx./6);
 supColPmf = histcounts(supCol,6)'./numel(supIdx);
 supColCdf = cumsum(supColPmf);
