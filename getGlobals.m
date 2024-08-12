@@ -5,6 +5,7 @@ KbName('UnifyKeyNames');
 globals.escapeKey = KbName('ESCAPE');
 globals.scrollKey = KbName('b');
 globals.acceptKey = KbName('y');
+globals.sKey = KbName('s');
 
 %% Set monoschrome values
 [globals.white, globals.black] = setMonochromes();
@@ -36,7 +37,6 @@ globals.xyEdgesCues = CenterRectOnPoint(...
 
 %% Set the fixation cross
 globals.cross = setCross();
-
 
 %% Miscellaneous setting
 

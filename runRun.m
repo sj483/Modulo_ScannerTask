@@ -52,6 +52,9 @@ setUp(globals.window);
 TaskIO = setTaskIO(SubjectId,RunId);
 HideCursor();
 
+%% Wait for Scanner
+[tScan0,globals] = waitForScanner(globals);
+
 %% Trial loop
 for iT = 1:numel(TaskIO)
 
@@ -69,13 +72,13 @@ for iT = 1:numel(TaskIO)
 
         %% Display
         globals = showCross(1, globals);
+        tShowA = globals.t;
         globals = showImg(a, 3, globals);
         liSendTrig(a+0,globals);
-        tShowA = globals.t;
         globals = showBlank(isiLength, globals);
+        tShowB = globals.t;
         globals = showImg(b, 3, globals);
         liSendTrig(b+8,globals);
-        tShowB = globals.t;
         globals = showSym(trialType, 1, globals);
 
         %% Request response
@@ -90,9 +93,9 @@ for iT = 1:numel(TaskIO)
         TaskIO(iT).tRespo = tRespo;
 
         try
-            save(targetFn, "TaskIO");
+            save(targetFn, "TaskIO", "tScan0", "globals");
         catch
-            warning('TaskIO not saved successfully on trial %i', iT);
+            warning('Data not saved successfully on trial %i', iT);
         end
 
         %% Escape
