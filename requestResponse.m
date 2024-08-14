@@ -29,7 +29,7 @@ while now < tTimeOut
 end
 
 if isnan(r)
-    r = arrayPerm(cursorPos).*1i;
+    r = (arrayPerm(cursorPos)+6).*1i;
 end
 
 globals.t = tTimeOut;
