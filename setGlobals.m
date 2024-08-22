@@ -1,4 +1,7 @@
-function [globals] = getGlobals(globals)
+function [globals] = setGlobals(globals)
+
+% Set the unit length of each IO pulse
+globals.portUnitLength = 8/1000;
 
 % Keyboard settings
 KbName('UnifyKeyNames');

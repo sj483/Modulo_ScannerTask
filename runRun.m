@@ -17,6 +17,7 @@ globals.SubjectId = SubjectId;
 globals.sendTriggers = true;
 try
     [globals.portObj,globals.portAddress] = setIOPort();
+    io64(globals.portObj,globals.portAddress,0);
     choice = questdlg(...
         sprintf('Successfully setup IO port.%cWould you like to continue?',10),...
         'Continue?', ...
@@ -43,7 +44,7 @@ sca;
 close all;
 
 %% Set the globals
-globals = getGlobals(globals);
+globals = setGlobals(globals);
 
 %% Set-up PsychToolbox
 setUp(globals.window);
@@ -74,11 +75,11 @@ for iT = 1:numel(TaskIO)
         globals = showCross(1, globals);
         tShowA = globals.t;
         globals = showImg(a, 3, globals);
-        liSendTrig(a+0,globals);
+        liSendTrig(a+8,globals);
         globals = showBlank(isiLength, globals);
         tShowB = globals.t;
         globals = showImg(b, 3, globals);
-        liSendTrig(b+8,globals);
+        liSendTrig(b+16,globals);
         globals = showSym(trialType, 1, globals);
 
         %% Request response
