@@ -19,7 +19,7 @@ while now < tTimeOut
             drawRespArray(arrayPerm, cursorPos, [0,0,1].*globals.white, globals);
             tLastValidScroll = keyTime;
         end
-    elseif ismember(globals.acceptKey,keyIds)
+    elseif ismember(globals.acceptKey,keyIds) && isnan(r)
         liSendTrig(1, globals);
         r = arrayPerm(cursorPos);
         drawRespArray(arrayPerm, cursorPos, [0,1,1].*globals.white, globals);
