@@ -1,7 +1,7 @@
 function [textures] = setTextures(window,SubjectId)
 imgPerms = load('ImgPerms.mat');
 imgPerms = imgPerms.ImgPerms;
-imgPerm = imgPerms.(SubjectId) + 1;
+imgPerm = imgPerms.(['x',SubjectId]) + 1;
 imageFns = {
     '.\Imgs\i00.png';
     '.\Imgs\i01.png';
