@@ -65,15 +65,25 @@ end
 nBackType = [1;1;2;2];
 nBackType = nBackType(randperm(numel(nBackType)));
 
-%% Get the OptSeq
-optSeq = load("OptSeq.mat");
-optSeq = optSeq.OptSeq;
-optSeqNoNan = optSeq(~isnan(optSeq));
-optSeqSquare = reshape(optSeqNoNan,6,6);
+%% Get the Run structure
+runStructs = load('RunStructures.mat');
+runStructs = runStructs.RunStructures;
+runSeq = runStructs(RunId).TypePerm;
+isiListNoNan = runStructs(RunId).ISI;
+isiList = nan(40,1);
+isiList(~isnan(runSeq)) = isiListNoNan;
+
+%% Permute the trial order, relabelling rows and columns
+runSeqNoNan = runSeq(~isnan(runSeq));
+gridOrder = nan(6*6,1);
+gridOrder(runSeqNoNan+1) = (1:(6*6))';
+gridOrder = reshape(gridOrder,6,6);
 gridPerm = randperm(6);
-optSeqSquare = optSeqSquare(gridPerm,gridPerm);
-optSeqNoNan = optSeqSquare(:);
-optSeq(~isnan(optSeq)) = optSeqNoNan;
+gridOrder = gridOrder(gridPerm,gridPerm);
+gridOrder = gridOrder(:);
+[~,runSeqNoNan] = sort(gridOrder);
+runSeqNoNan = runSeqNoNan -1;
+runSeq(~isnan(runSeq)) = runSeqNoNan;
 
 %% Preallocate the TaskIO structure
 numTrials = 6^2 + 4;
@@ -94,14 +104,14 @@ TaskIO = repmat(struct( ...
 
 %%
 for iTrial = 1:numTrials
-    cPairId = optSeq(iTrial);
+    cPairId = runSeq(iTrial);
     TaskIO(iTrial).PairId = cPairId;
 
     if isnan(cPairId)
         TaskIO(iTrial).TrialType = 'Null';
 
     else
-        TaskIO(iTrial).isiLength = getISI();
+        TaskIO(iTrial).isiLength = isiList(iTrial);
         TaskIO(iTrial).arrayPerm = randperm(6);
         TaskIO(iTrial).startPos = randi(6);
         a = mod(cPairId, 6);
