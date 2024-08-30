@@ -4,7 +4,7 @@ numRows = 2;
 numPerRow = 3;
 imgWidth = round((5/27)*nX);
 outBlankX = round((5/27)*nX);
-outBlankY = round((1/27)*nY);
+outBlankY = round((3/27)*nY);
 
 %% Calculate the space between images in the x and y directions
 % inBlankX = (nX - numPerRow*imgWidth - outBlankX*2) / (numPerRow - 1);
