@@ -1,27 +1,27 @@
 function [xyEdgesResp, xyCentreResp] = setRespCoords(nX, nY)
 
-imgWidth = round((6/27)*nX);
 numRows = 2;
 numPerRow = 3;
+imgWidth = round((5/27)*nX);
+outBlankX = round((3/27)*nX);
+outBlankY = round((1/27)*nY);
 
-%% Calculate the space between image in the x and y directions
-blankX = (nX - numPerRow*imgWidth) / (numPerRow + 1);
-blankY = (nY - numRows*imgWidth) / (numRows + 1);
-
+%% Calculate the space between images in the x and y directions
+% inBlankX = (nX - numPerRow*imgWidth - outBlankX*2) / (numPerRow - 1);
+% inBlankY = (nY - numRows*imgWidth - outBlankY*2) / (numRows - 1);
 
 %% Calculate the x and y co-ords of the centres of each response textures
 xCents = linspace(...
-        blankX + imgWidth/2, .... startX
-        nX - (blankX + imgWidth/2), .... endX
+        outBlankX + imgWidth/2, .... startX
+        nX - (outBlankX + imgWidth/2), .... endX
         numPerRow);
 yCents = linspace(...
-        blankY + imgWidth/2, .... startY
-        nY - (blankY + imgWidth/2), .... endY
+        outBlankY + imgWidth/2, .... startY
+        nY - (outBlankY + imgWidth/2), .... endY
         numRows);
 xyCentreResp = nan(2,6);
 xyCentreResp(1,:) = repmat(xCents,1,2);
 xyCentreResp(2,:) = kron(yCents,[1,1,1]);
-
 
 %% Calculate the x and y co-ords of the edges of each response texture
 xyEdgesResp = nan(4,6); % Each column will contain 4 numbers...
