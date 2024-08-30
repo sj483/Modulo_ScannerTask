@@ -103,7 +103,7 @@ for iT = 1:numel(TaskIO)
         [~, ~, keyCode] = KbCheck(-3);
         if keyCode(globals.escapeKey)
             sca;
-            break
+            error('Terminated by user.');
         end
     end
 end

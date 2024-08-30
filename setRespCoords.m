@@ -2,9 +2,9 @@ function [xyEdgesResp, xyCentreResp] = setRespCoords(nX, nY)
 
 numRows = 2;
 numPerRow = 3;
-imgWidth = round((5/27)*nX);
-outBlankX = round((5/27)*nX);
-outBlankY = round((3/27)*nY);
+imgWidth = round((14/64)*nX);
+outBlankX = round((10/64)*nX);
+outBlankY = round((6/64)*nY);
 
 %% Calculate the space between images in the x and y directions
 % inBlankX = (nX - numPerRow*imgWidth - outBlankX*2) / (numPerRow - 1);
