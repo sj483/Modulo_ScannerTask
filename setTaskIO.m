@@ -68,8 +68,14 @@ nBackType = nBackType(randperm(numel(nBackType)));
 %% Get the Run structure
 runStructs = load('RunStructures.mat');
 runStructs = runStructs.RunStructures;
-runSeq = runStructs(RunId).TypePerm;
-isiListNoNan = runStructs(RunId).ISI;
+if RunId > 0
+    runSeq = runStructs(RunId).TypePerm;
+    isiListNoNan = runStructs(RunId).ISI;
+else
+    runSeq = [(0:35)';nan(4,1)];
+    runSeq = runSeq(randperm(numel(runSeq)));
+    isiListNoNan = rand(36,1).*4 + 1;
+end
 isiList = nan(40,1);
 isiList(~isnan(runSeq)) = isiListNoNan;
 
