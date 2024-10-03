@@ -108,6 +108,10 @@ for iT = 1:numel(TaskIO)
     end
 end
 
+%% Close the screen
+sca;
+close all;
+
 %% Switch running priority of PTB back to normal
 Priority(0);
 return
